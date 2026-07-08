@@ -1,9 +1,6 @@
 import org.example.model.Bread;
 import org.example.model.Chocolate;
-import org.example.model.Coke;
 import org.example.model.ProductForSale;
-import org.example.rpg.Monster;
-import org.example.rpg.Troll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,14 +19,20 @@ public class MainTest {
     ProductForSale chocolate;
     ProductForSale coke;
 
-    Monster troll;
+    org.example.rpg.Monster troll;
 
     @BeforeEach
     void setUp() {
-        bread = new Bread("Test", 10, "Test Bread");
-        chocolate = new Chocolate("Test", 10, "Test Chocolate");
-        coke = new Coke("Test", 10, "Test Coke");
-        troll = new Troll("Shrek", 1000, 100);
+        // 4. parametreleri (yüzde, şeker, un tipi vb.) eklemeyi unutma!
+        bread = new Bread("Bakery", 10, "Test Bread", "Whole Wheat");
+        chocolate = new Chocolate("Sweet", 15, "Test Chocolate", (int) 70.0);
+        coke = new ProductForSale() {
+            @Override
+            public void showDetails() {
+
+            }
+        };
+        troll = new org.example.rpg.Monster();
     }
 
     @DisplayName("Subclasslar Superclass değişkenlerinin değerlerine ulaşabiliyor mu?")
